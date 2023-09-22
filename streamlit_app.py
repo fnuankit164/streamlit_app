@@ -48,7 +48,7 @@ if st.button('Get Fruit load list'):
 def insert_row_snowflake(new_fruit):
     with my_cxn.cursor() as my_cur:
         my_cur.execute(f"insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('{new_fruit}')")
-        return 'Thanks for adding'+new_fruit
+        return 'Thanks for adding '+new_fruit
 
 add_my_fruit = st.text_input('What fruit would you like to add?')
 if st.button('Add a Fruit to the List'):

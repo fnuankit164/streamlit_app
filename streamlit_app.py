@@ -44,7 +44,7 @@ if st.button('Get Fruit load list'):
     my_cxn = conn.connect(**st.secrets["snowflake"])
     my_data_rows = get_fruit_load_list()
     my_cnx.close()
-  st.dataframe(my_data_rows)
+    st.dataframe(my_data_rows)
 
 def insert_row_snowflake(new_fruit):
     with my_cxn.cursor() as my_cur:

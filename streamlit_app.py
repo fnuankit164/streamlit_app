@@ -25,6 +25,7 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_cho
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
 
+st.stop()
 my_cxn = conn.connect(**st.secrets["snowflake"])
 my_cur = my_cxn.cursor()
 my_cur.execute("Select * from fruit_load_list")

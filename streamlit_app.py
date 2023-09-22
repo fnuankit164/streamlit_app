@@ -45,6 +45,15 @@ if st.button('Get Fruit load list'):
   my_data_rows = get_fruit_load_list()
   st.dataframe(my_data_rows)
 
-st.stop() 
-fruit_name = st.text_input('What fruit would you like to add?')
-my_cur.execute(f"insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('{fruit_name}')")
+def insert_row_snowflake(new_fruit):
+    with my_cxn.cursor() as my_cur:
+        my_cur.execute(f"insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('{new_fruit}')")
+        return 'Thanks for adding'+new_fruit
+
+add_my_fruit = st.text_input('What fruit would you like to add?')
+if st.button('Add a Fruit to the List'):
+    my_cxn = conn.connect(**st.secrets["snowflake"])
+    back_from_function = insert_row_snowflake(add_mu_fruit)
+    st.text(back_from_function)
+
+
